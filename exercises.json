@@ -1,0 +1,36 @@
+{
+  "default": {
+    "title": "Try Python",
+    "instructions": "Write some Python code and click Run.",
+    "code": "print(\"Hello from Python!\")",
+    "hint": ""
+  },
+
+  "debug01": {
+    "title": "Debug 1 — NameError",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "name = \"Sam\"\nprint(\"Hello\", nmae)",
+    "hint": "Look carefully at the names used in the program."
+  },
+
+  "debug02": {
+    "title": "Debug 2 — TypeError",
+    "instructions": "This program contains a mistake involving data types. Run it and use the error message to help find the problem.",
+    "code": "age = 14\n\nprint(\"Next year you will be \" + age + 1)",
+    "hint": "Look at the types of the things being joined together."
+  },
+
+  "debug03": {
+    "title": "Debug 3 — IndexError",
+    "instructions": "This program contains a mistake involving a list. Run it and use the traceback to work out what went wrong.",
+    "code": "colours = [\"red\", \"green\", \"blue\"]\nprint(colours[3])",
+    "hint": "Look carefully at which positions actually exist in the list."
+  },
+
+  "multiple_input": {
+    "title": "Input Practice",
+    "instructions": "This program asks for two pieces of information. Enter the answers in the Program input box before clicking Run.",
+    "code": "name = input(\"What is your name? \")\nage = input(\"How old are you? \")\nprint(\"Hello\", name)\nprint(\"You are\", age, \"years old.\")",
+    "hint": ""
+  }
+}
