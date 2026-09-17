@@ -184,5 +184,65 @@
     "instructions": "This program should print 'You scored 90.0%' for a mark of 18 out of 20. Run it and see what it prints instead, then fix the mistake.",
     "code": "mark = 18\ntotal = 20\npercentage = mark / total\nprint(f\"You scored {percentage}%\")",
     "hint": "To turn a fraction into a percentage, what do you need to multiply it by?"
+  },
+  "debug31": {
+    "title": "Debug 31",
+    "instructions": "The voting age is 18. This program should print 'You can vote' for someone who is 18. Run it, then fix the mistake.",
+    "code": "age = 18\nif age > 18:\n    print(\"You can vote\")\nelse:\n    print(\"You cannot vote yet\")",
+    "hint": "Should someone who is exactly 18 be allowed to vote? Check which comparison operator includes that age."
+  },
+  "debug32": {
+    "title": "Debug 32",
+    "instructions": "The pass mark for this test is 50. This program should print 'Pass' for a score of exactly 50. Run it, then fix the mistake.",
+    "code": "score = 50\nif score < 50:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")",
+    "hint": "A score equal to the pass mark should still count as a pass. Which comparison operator includes 'equal to'?"
+  },
+  "debug33": {
+    "title": "Debug 33",
+    "instructions": "Tuesday (22 degrees) was warmer than Monday (18 degrees), so this program should print 'The warmer day was Tuesday'. Run it, then fix the mistake.",
+    "code": "monday_temp = 18\ntuesday_temp = 22\nif monday_temp > tuesday_temp:\n    warmer_day = \"Tuesday\"\nelse:\n    warmer_day = \"Monday\"\nprint(f\"The warmer day was {warmer_day}\")",
+    "hint": "Look at what each branch stores in warmer_day. Have the two day names been swapped?"
+  },
+  "debug34": {
+    "title": "Debug 34",
+    "instructions": "The bus has a capacity of 10 people. This program should print 'Bus is full' when there are exactly 10 people on board. Run it, then fix the mistake.",
+    "code": "people = 10\ncapacity = 10\nif people > capacity:\n    print(\"Bus is full\")\nelse:\n    print(\"There is room\")",
+    "hint": "The bus should count as full once people reaches the capacity, not only when it goes over. Which operator includes 'equal to'?"
+  },
+  "debug35": {
+    "title": "Debug 35",
+    "instructions": "0 degrees is the freezing point, so this program should print 'It is freezing' when the temperature is 0. Run it, then fix the mistake.",
+    "code": "temperature = 0\nif temperature < 0:\n    print(\"It is freezing\")\nelse:\n    print(\"It is not freezing\")",
+    "hint": "A temperature of exactly 0 should still count as freezing. Which comparison operator includes 'equal to'?"
+  },
+  "debug36": {
+    "title": "Debug 36",
+    "instructions": "There are 8 oranges and 5 apples, so this program should print 'There are more oranges'. Run it, then fix the mistake.",
+    "code": "apples = 5\noranges = 8\nif apples > oranges:\n    more_fruit = \"apples\"\nelse:\n    more_fruit = \"apples\"\nprint(f\"There are more {more_fruit}\")",
+    "hint": "Look at both branches of the if statement. Do they store different results, or the same one?"
+  },
+  "debug37": {
+    "title": "Debug 37",
+    "instructions": "This program should work out the largest of two numbers, 7 and 3, and print 'The largest number is 7'. Run it, then fix the mistake.",
+    "code": "a = 7\nb = 3\nif a < b:\n    largest = a\nelse:\n    largest = b\nprint(f\"The largest number is {largest}\")",
+    "hint": "Think about which comparison operator you need to find the bigger number, not the smaller one."
+  },
+  "debug38": {
+    "title": "Debug 38",
+    "instructions": "Customers who spend $100 or more should get a discount. This program should print 'You get a discount' for someone who spent $150. Run it, then fix the mistake.",
+    "code": "total_spent = 150\nif total_spent <= 100:\n    print(\"You get a discount\")\nelse:\n    print(\"No discount\")",
+    "hint": "Should a customer who spent more than $100 get the discount? Check which comparison operator you actually need."
+  },
+  "debug39": {
+    "title": "Debug 39",
+    "instructions": "This program should greet someone called Sam Lee and print 'Hello, Sam Lee'. Run it, then fix the mistake.",
+    "code": "first_name = \"Sam\"\nlast_name = \"Lee\"\nprint(f\"Hello, {last_name} {first_name}\")",
+    "hint": "Check the order the variables are used in inside the f-string."
+  },
+  "debug40": {
+    "title": "Debug 40",
+    "instructions": "A basket can hold a maximum of 5 items. This program should print 'Basket is full' when there are exactly 5 items in it. Run it, then fix the mistake.",
+    "code": "items_in_basket = 5\nmax_items = 5\nif items_in_basket > max_items:\n    print(\"Basket is full\")\nelse:\n    print(\"You can add more items\")",
+    "hint": "The basket should count as full once it reaches the maximum, not only when it goes over. Which operator includes 'equal to'?"
   }
 }
