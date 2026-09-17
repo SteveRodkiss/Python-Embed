@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise Editor</title>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+  <div class="w3-bar w3-dark-grey w3-padding">
+    <span class="w3-bar-item w3-large"><b>Exercise Editor</b></span>
+    <button id="openBtn" class="w3-bar-item w3-button w3-right w3-dark-grey w3-border w3-round">Open exercises.json</button>
+    <button id="saveBtn" class="w3-bar-item w3-button w3-right w3-dark-grey w3-border w3-round" disabled>Save</button>
+  </div>
+
+  <div id="status" class="w3-panel w3-pale-yellow w3-border w3-leftbar w3-border-amber">
+    Click "Open exercises.json" and select the file from this project to begin editing.
+  </div>
+
+  <div class="w3-row-padding w3-padding" id="app" style="display:none">
+
+    <div class="w3-col m4">
+      <button id="newBtn" class="w3-button w3-blue w3-block w3-margin-bottom w3-round">+ New Exercise</button>
+      <div id="list" class="w3-ul w3-border w3-white"></div>
+    </div>
+
+    <div class="w3-col m8">
+      <div id="editor" class="w3-card w3-white w3-padding" style="display:none">
+
+        <label class="w3-text-grey">Key</label>
+        <input id="fieldKey" class="w3-input w3-border w3-margin-bottom" type="text">
+
+        <label class="w3-text-grey">Title</label>
+        <input id="fieldTitle" class="w3-input w3-border w3-margin-bottom" type="text">
+
+        <label class="w3-text-grey">Instructions</label>
+        <textarea id="fieldInstructions" class="w3-input w3-border w3-margin-bottom" rows="3"></textarea>
+
+        <label class="w3-text-grey">Code</label>
+        <textarea id="fieldCode" class="w3-input w3-border w3-margin-bottom code-area" rows="10"></textarea>
+
+        <label class="w3-text-grey">Hint</label>
+        <textarea id="fieldHint" class="w3-input w3-border w3-margin-bottom" rows="2"></textarea>
+
+        <button id="deleteBtn" class="w3-button w3-red w3-round">Delete Exercise</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="editor.js"></script>
+</body>
+</html>

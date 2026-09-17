@@ -5,32 +5,184 @@
     "code": "print(\"Hello from Python!\")",
     "hint": ""
   },
-
   "debug01": {
-    "title": "Debug 1 — NameError",
+    "title": "Debug 1",
     "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
     "code": "name = \"Sam\"\nprint(\"Hello\", nmae)",
     "hint": "Look carefully at the names used in the program."
   },
-
   "debug02": {
-    "title": "Debug 2 — TypeError",
+    "title": "Debug 2",
+    "instructions": "Run the code and read the error? Can you spot what's wrong?",
+    "code": "print(\"Hello, World!')",
+    "hint": "Check that everything that you open is also closed..."
+  },
+  "debug03": {
+    "title": "Debug 3",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "name = \"Alex\"\nprint(f\"Hello, {name}\"",
+    "hint": "Count the brackets. Does every opening bracket have a matching closing bracket?"
+  },
+  "debug04": {
+    "title": "Debug 4",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "class = \"Year 9\"\nprint(class)",
+    "hint": "Some words are reserved by Python and can't be used as variable names."
+  },
+   "debug05": {
+    "title": "Debug 5",
     "instructions": "This program contains a mistake involving data types. Run it and use the error message to help find the problem.",
-    "code": "age = 14\n\nprint(\"Next year you will be \" + age + 1)",
+    "code": "age = 14\nprint(\"Next year you will be \" + age + 1)",
     "hint": "Look at the types of the things being joined together."
   },
-
-  "debug03": {
-    "title": "Debug 3 — IndexError",
-    "instructions": "This program contains a mistake involving a list. Run it and use the traceback to work out what went wrong.",
-    "code": "colours = [\"red\", \"green\", \"blue\"]\nprint(colours[3])",
-    "hint": "Look carefully at which positions actually exist in the list."
+  "debug06": {
+    "title": "Debug 6",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "message = \"Hello there\nprint(message)",
+    "hint": "Check that every string starts and ends with a matching quote mark."
   },
-
-  "multiple_input": {
-    "title": "Input Practice",
-    "instructions": "This program asks for two pieces of information. Enter the answers in the Program input box before clicking Run.",
-    "code": "name = input(\"What is your name? \")\nage = input(\"How old are you? \")\nprint(\"Hello\", name)\nprint(\"You are\", age, \"years old.\")",
-    "hint": ""
+  "debug07": {
+    "title": "Debug 7",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "name = \"Jess\"\nage = 13\nprint(name age)",
+    "hint": "When print() has more than one item, they need something between them."
+  },
+  "debug08": {
+    "title": "Debug 8",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "1st_place = \"Alex\"\nprint(1st_place)",
+    "hint": "Variable names aren't allowed to start with certain characters."
+  },
+  "debug09": {
+    "title": "Debug 9",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "city = 'London\"\nprint(city)",
+    "hint": "A string needs to start and end with the same type of quote mark."
+  },
+  "debug10": {
+    "title": "Debug 10",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "name = \"Sam\"\n    print(name)",
+    "hint": "Python cares about spaces at the start of a line. Only indent when it's expected."
+  },
+  "debug11": {
+    "title": "Debug 11",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "colours = [\"red\", \"green\", \"blue\"]\nfor colour in colours\n    print(colour)",
+    "hint": "Every for loop line needs to end with a colon."
+  },
+  "debug12": {
+    "title": "Debug 12",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "numbers = [1, 2, 3]\nfor number in numbers:\nprint(number)",
+    "hint": "The lines inside a loop need to be indented."
+  },
+  "debug13": {
+    "title": "Debug 13",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "pets = [\"cat\", \"dog\"]\nfor pet in pets:\n    print(pet)\n     print(\"Woof\")",
+    "hint": "Make sure every line inside the loop is indented by the same amount."
+  },
+  "debug14": {
+    "title": "Debug 14",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "fruits = [\"apple\", \"pear\"]\nfor fruit fruits:\n    print(fruit)",
+    "hint": "A for loop needs the word 'in' between the variable and the list."
+  },
+  "debug15": {
+    "title": "Debug 15",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "days = [\"Mon\", \"Tue\"]\nfor day = days:\n    print(day)",
+    "hint": "You don't need an equals sign here \u2014 think about what word links the variable to the list."
+  },
+  "debug16": {
+    "title": "Debug 16",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "scores = [5, 10, 15]\nfor i in range(len(scores) + 1):\n    print(scores[i])",
+    "hint": "Check how many items are actually in the list compared with how many times the loop runs."
+  },
+  "debug17": {
+    "title": "Debug 17",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "colours = [\"red\", \"green\", \"blue\"]\nprint(colours[len(colours)])",
+    "hint": "The last valid index is one less than the length of the list."
+  },
+  "debug18": {
+    "title": "Debug 18",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "names = [\"Amy\", \"Ben\"]\nfor name in names:\n    print(nane)",
+    "hint": "Check the spelling of the variable each time you use it."
+  },
+  "debug19": {
+    "title": "Debug 19",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "fruit = [\"apple\", \"pear\"]\nfor item in friut:\n    print(item)",
+    "hint": "Check the spelling of the list name in the for loop."
+  },
+  "debug20": {
+    "title": "Debug 20",
+    "instructions": "This program contains a mistake. Run it, read the error message carefully, and fix the program.",
+    "code": "pets = [\"cat\", \"dog\", \"fish\"]\nfor i in range(1, len(pets) + 1):\n    print(pets[i])",
+    "hint": "Remember that list indexes start counting from 0, not 1."
+  },
+  "debug21": {
+    "title": "Debug 21",
+    "instructions": "This program should print the area of a rectangle that is 5 by 3. It should print 'The area is 15' but it doesn't. Run it, then fix the mistake.",
+    "code": "length = 5\nwidth = 3\narea = length + width\nprint(f\"The area is {area}\")",
+    "hint": "To find the area of a rectangle, you multiply the length and width, not add them."
+  },
+  "debug22": {
+    "title": "Debug 22",
+    "instructions": "This program should work out the cost of 3 items at $5 each and print 'Total cost: 15'. Run it and see what it prints instead, then fix the mistake.",
+    "code": "price = \"5\"\nquantity = 3\ntotal = price * quantity\nprint(f\"Total cost: {total}\")",
+    "hint": "Check whether price is stored as a number or as text. Only numbers can be multiplied together properly."
+  },
+  "debug23": {
+    "title": "Debug 23",
+    "instructions": "This program should say that someone who is 14 now will be 15 next year. Run it, then fix the mistake.",
+    "code": "age = 14\nnext_year_age = age + 2\nprint(f\"Next year you will be {next_year_age}\")",
+    "hint": "Think carefully about how many years pass between now and 'next year'."
+  },
+  "debug24": {
+    "title": "Debug 24",
+    "instructions": "This program should print the average of 10 and 20, which is 15. Run it and see what it prints instead, then fix the mistake.",
+    "code": "a = 10\nb = 20\naverage = a + b / 2\nprint(f\"The average is {average}\")",
+    "hint": "Python calculates division before addition. You may need brackets to control the order things happen in."
+  },
+  "debug25": {
+    "title": "Debug 25",
+    "instructions": "This program should take $10 off a $50 item and print 'Sale price: 40'. Run it, then fix the mistake.",
+    "code": "original_price = 50\ndiscount = 10\nsale_price = original_price + discount\nprint(f\"Sale price: {sale_price}\")",
+    "hint": "A discount should make the price go down, not up."
+  },
+  "debug26": {
+    "title": "Debug 26",
+    "instructions": "This program should print 'My favourite colour is blue', since \"blue\" is the third colour in the list. Run it, then fix the mistake.",
+    "code": "colours = [\"red\", \"green\", \"blue\"]\nfavourite = colours[0]\nprint(f\"My favourite colour is {favourite}\")",
+    "hint": "Remember that list positions start counting from 0, so the first item is at position 0."
+  },
+  "debug27": {
+    "title": "Debug 27",
+    "instructions": "This program should print 'Average score: 4.5' for a total of 9 marks over 2 tests. Run it and see what it prints instead, then fix the mistake.",
+    "code": "total_marks = 9\nnumber_of_tests = 2\naverage = total_marks // number_of_tests\nprint(f\"Average score: {average}\")",
+    "hint": "The // operator rounds division down to a whole number. Is that the operator you want here?"
+  },
+  "debug28": {
+    "title": "Debug 28",
+    "instructions": "This program should convert 20 degrees Celsius to Fahrenheit and print '20C is 68.0F'. Run it, then fix the mistake.",
+    "code": "celsius = 20\nfahrenheit = celsius * 9 / 5\nprint(f\"{celsius}C is {fahrenheit}F\")",
+    "hint": "The full formula is (celsius times 9/5) plus 32. Check whether every part of the formula is there."
+  },
+  "debug29": {
+    "title": "Debug 29",
+    "instructions": "This program should add the price of an apple ($2) and a banana ($3) and print 'Total cost: 5'. Run it, then fix the mistake.",
+    "code": "apple_price = 2\nbanana_price = 3\ntotal = apple_price + apple_price\nprint(f\"Total cost: {total}\")",
+    "hint": "Look closely at the variable names being added together. Are they the right ones?"
+  },
+  "debug30": {
+    "title": "Debug 30",
+    "instructions": "This program should print 'You scored 90.0%' for a mark of 18 out of 20. Run it and see what it prints instead, then fix the mistake.",
+    "code": "mark = 18\ntotal = 20\npercentage = mark / total\nprint(f\"You scored {percentage}%\")",
+    "hint": "To turn a fraction into a percentage, what do you need to multiply it by?"
   }
 }
