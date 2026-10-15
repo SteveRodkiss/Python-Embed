@@ -20,6 +20,8 @@ index.html?exercise=debug01
 ```
 
 If no `exercise` parameter is given, it falls back to the `"default"` entry.
+The player shows a button for each exercise in the sidebar; selecting one loads
+its instructions and starter code and updates the `exercise` URL parameter.
 Students edit the code in a Monaco editor, click **Run**, and see output (and
 Python tracebacks) in the browser — Pyodide runs Python entirely client-side.
 

@@ -28,9 +28,56 @@
     }
 
     #page {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 16px;
+    }
+
+    .page-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    #exerciseContent {
+      flex: 1;
+      min-width: 0;
+    }
+
+    #exerciseSidebar {
+      flex: 0 0 220px;
+      position: sticky;
+      top: 16px;
+    }
+
+    #exerciseSidebar h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    #exerciseList {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+
+    .exercise-button {
+      width: 100%;
+      text-align: left;
+      background: #eeeeee;
+      color: #222;
+    }
+
+    .exercise-button.active {
+      background: #1a73e8;
+      color: white;
+    }
+
+    .exercise-button:focus-visible {
+      outline: 2px solid #174ea6;
+      outline-offset: 2px;
     }
 
     h2 {
@@ -135,6 +182,22 @@
       margin-top: 12px;
       display: none;
     }
+
+    @media (max-width: 760px) {
+      .page-layout {
+        flex-direction: column;
+      }
+
+      #exerciseSidebar {
+        position: static;
+        flex: auto;
+        width: 100%;
+      }
+
+      #exerciseList {
+        max-height: 220px;
+      }
+    }
   </style>
 </head>
 
@@ -142,37 +205,46 @@
 
 <div id="page">
 
-  <h2 id="title">Loading exercise...</h2>
+  <div class="page-layout">
+    <main id="exerciseContent">
+      <h2 id="title">Loading exercise...</h2>
 
-  <div id="instructions"></div>
+      <div id="instructions"></div>
 
-  <div id="editor"></div>
+      <div id="editor"></div>
 
-  <div class="controls">
-    <button id="runButton" disabled>Run</button>
-    <button id="resetButton" disabled>Reset</button>
+      <div class="controls">
+        <button id="runButton" disabled>Run</button>
+        <button id="resetButton" disabled>Reset</button>
+      </div>
+
+      <div id="status">Loading...</div>
+
+      <div id="inputSection">
+        <div class="section-title">Program input</div>
+
+        <textarea
+          id="inputArea"
+          placeholder="If your program uses input(), enter the answers here, one per line."
+        ></textarea>
+
+        <div id="inputHelp">
+          Each line supplies one answer to an input() call.
+        </div>
+      </div>
+
+      <div class="section-title">Output</div>
+
+      <pre id="output"></pre>
+
+      <div id="hint"></div>
+    </main>
+
+    <aside id="exerciseSidebar" aria-label="Exercise navigation">
+      <h3>Problems</h3>
+      <nav id="exerciseList" aria-label="Problems"></nav>
+    </aside>
   </div>
-
-  <div id="status">Loading...</div>
-
-  <div id="inputSection">
-    <div class="section-title">Program input</div>
-
-    <textarea
-      id="inputArea"
-      placeholder="If your program uses input(), enter the answers here, one per line."
-    ></textarea>
-
-    <div id="inputHelp">
-      Each line supplies one answer to an input() call.
-    </div>
-  </div>
-
-  <div class="section-title">Output</div>
-
-  <pre id="output"></pre>
-
-  <div id="hint"></div>
 
 </div>
 
@@ -211,6 +283,9 @@
   const resetButton =
     document.getElementById("resetButton");
 
+  const exerciseListElement =
+    document.getElementById("exerciseList");
+
 
   /* =========================================================
      GET EXERCISE ID FROM URL
@@ -223,7 +298,7 @@
   const params =
     new URLSearchParams(window.location.search);
 
-  const exerciseName =
+  let exerciseName =
     params.get("exercise") || "default";
 
 
@@ -237,9 +312,13 @@
 
   let editor = null;
 
+  let editorLoading = false;
+
   let pyodide = null;
 
   let pyodideReadyPromise = null;
+
+  let pythonStatus = "Loading Python...";
 
 
   /* =========================================================
@@ -272,6 +351,7 @@
       exercises =
         await response.json();
 
+      renderExerciseList();
 
       /*
        * Find the requested exercise.
@@ -290,33 +370,7 @@
 
       }
 
-
-      /*
-       * Fill in the page.
-       */
-      titleElement.textContent =
-        exercise.title;
-
-      instructionsElement.textContent =
-        exercise.instructions;
-
-
-      if (exercise.hint) {
-
-        hintElement.textContent =
-          "Hint: " + exercise.hint;
-
-        hintElement.style.display =
-          "block";
-
-      }
-
-
-      /*
-       * Create the Monaco editor now that we have
-       * the exercise code.
-       */
-      createEditor(exercise.code);
+      selectExercise(exerciseName, false);
 
 
     } catch (error) {
@@ -334,12 +388,108 @@
 
   }
 
+  function renderExerciseList() {
+
+    exerciseListElement.textContent = "";
+
+    Object.entries(exercises).forEach(
+      function ([name, item]) {
+
+        const button =
+          document.createElement("button");
+
+        button.type = "button";
+        button.className = "exercise-button";
+        button.dataset.exercise = name;
+        button.textContent = item.title;
+        button.addEventListener(
+          "click",
+          function () {
+            selectExercise(name, true);
+          }
+        );
+
+        exerciseListElement.appendChild(button);
+
+      }
+    );
+
+  }
+
+
+  function selectExercise(name, updateUrl) {
+
+    const selectedExercise =
+      exercises[name];
+
+    if (!selectedExercise) {
+      return;
+    }
+
+    exerciseName = name;
+    exercise = selectedExercise;
+
+    titleElement.textContent =
+      exercise.title;
+
+    instructionsElement.textContent =
+      exercise.instructions;
+
+    hintElement.textContent =
+      exercise.hint ? "Hint: " + exercise.hint : "";
+
+    hintElement.style.display =
+      exercise.hint ? "block" : "none";
+
+    if (editor) {
+      editor.setValue(exercise.code);
+      editor.focus();
+    } else {
+      createEditor();
+    }
+
+    inputArea.value = "";
+    outputElement.textContent = "";
+    statusElement.textContent = pythonStatus;
+    document.title = exercise.title + " | Python Editor";
+
+    Array.from(exerciseListElement.children).forEach(
+      function (button) {
+
+        const active =
+          button.dataset.exercise === name;
+
+        button.classList.toggle("active", active);
+
+        if (active) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+
+      }
+    );
+
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("exercise", name);
+      window.history.replaceState(null, "", url);
+    }
+
+  }
+
 
   /* =========================================================
      CREATE MONACO EDITOR
      ========================================================= */
 
-  function createEditor(code) {
+  function createEditor() {
+
+    if (editor || editorLoading || !exercise) {
+      return;
+    }
+
+    editorLoading = true;
 
     require.config({
       paths: {
@@ -358,7 +508,7 @@
             document.getElementById("editor"),
             {
 
-              value: code,
+              value: exercise.code,
 
               language: "python",
 
@@ -386,11 +536,12 @@
             }
           );
 
+        editorLoading = false;
 
         resetButton.disabled = false;
 
         statusElement.textContent =
-          "Loading Python...";
+          pythonStatus;
 
       }
     );
@@ -443,6 +594,7 @@
       statusElement.textContent =
         "Python ready.";
 
+      pythonStatus = "Python ready.";
       runButton.disabled = false;
 
 
@@ -451,6 +603,7 @@
       statusElement.textContent =
         "Could not load Python.";
 
+      pythonStatus = "Could not load Python.";
       outputElement.textContent =
         error.message;
 
