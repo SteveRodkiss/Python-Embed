@@ -12,18 +12,25 @@ no server, account, or install required.
 
 ## How it works
 
-`index.html` reads an `exercise` key from its own URL and loads the matching
-entry from `exercises.json`, which sits next to it in the same folder:
+`index.html` loads the exercises from `exercises.json`, which sits next to it
+in the same folder. The player displays a sidebar with a button for every
+exercise; students can select a problem without leaving the page. By default,
+the first exercise in `exercises.json` is selected:
+
+```
+index.html
+```
+
+You can optionally open a specific problem directly with its key in the
+`exercise` query parameter:
 
 ```
 index.html?exercise=debug01
 ```
 
-If no `exercise` parameter is given, it falls back to the `"default"` entry.
-The player shows a button for each exercise in the sidebar; selecting one loads
-its instructions and starter code and updates the `exercise` URL parameter.
-Students edit the code in a Monaco editor, click **Run**, and see output (and
-Python tracebacks) in the browser — Pyodide runs Python entirely client-side.
+Selecting a problem in the sidebar also updates this parameter. Students edit
+the code in a Monaco editor, click **Run**, and see output (and Python
+tracebacks) in the browser — Pyodide runs Python entirely client-side.
 
 ## 1. Fork and host it
 
@@ -37,19 +44,21 @@ Python tracebacks) in the browser — Pyodide runs Python entirely client-side.
 Any static host works (GitHub Pages, Netlify, your school's web host, etc.) —
 just make sure `index.html` and `exercises.json` stay in the same folder.
 
-## 2. Embed an exercise in Google Sites
+## 2. Embed the exercise player in Google Sites
 
 1. Open your Google Site and go to the page you want the exercise on.
 2. In the right-hand **Insert** panel, choose **Embed**.
-3. Choose **By URL** and paste your hosted page with the exercise you want, e.g.:
+3. Choose **By URL** and paste the hosted `index.html` URL. No query parameter
+   is needed; students can choose a problem from the sidebar:
    ```
-   https://<your-username>.github.io/<repo-name>/index.html?exercise=debug03
+   https://<your-username>.github.io/<repo-name>/index.html
    ```
 4. Click **Insert**. Google Sites will embed it in an `<iframe>`.
 5. Resize the embedded frame in the Sites editor so the editor and output
    area aren't cramped (roughly 700–900px tall works well).
-6. Repeat on a new page/section for each exercise, just changing the
-   `exercise=` value in the URL.
+6. To embed a particular problem directly, optionally add its key, such as
+   `?exercise=debug03`, to the URL. The sidebar remains available for switching
+   to other problems.
 
 Because everything runs client-side, no data is sent anywhere — each student
 gets their own private, in-browser Python session.
@@ -97,8 +106,9 @@ Each exercise is a key in `exercises.json` mapping to an object:
 | `code`         | The starter code loaded into the editor (`\n` for new lines).    |
 | `hint`         | Optional hint text shown to students; leave `""` for no hint.    |
 
-The key (e.g. `debug01`) is what you put in the URL as `?exercise=debug01`,
-so keep it short and URL-safe (letters, numbers, underscores).
+The key (e.g. `debug01`) can be used in the optional URL parameter
+`?exercise=debug01` to open a specific problem directly, so keep it short and
+URL-safe (letters, numbers, underscores).
 
 ## License
 
